@@ -13,25 +13,19 @@ localStorage.getItem("user")
 );
 
 useEffect(() => {
-if (user?.email) {
-fetchOrders();
-}
+  const fetchOrders = async () => {
+    if (!user?.email) return;
+
+    try {
+      const res = await API.get(`/orders/${user.email}`);
+      setOrders(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  fetchOrders();
 }, [user]);
-
-const fetchOrders = async () => {
-try {
-const res = await API.get(
-`/orders/${user.email}`
-);
-
-
-  setOrders(res.data);
-} catch (err) {
-  console.log(err);
-}
-
-
-};
 
 if (!user) {
 return (
