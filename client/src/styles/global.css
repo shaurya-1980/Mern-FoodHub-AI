@@ -1,0 +1,203 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family: Inter, Arial, sans-serif;
+  color:white;
+  overflow-x:hidden;
+
+  background:
+radial-gradient(circle at top left,#f97316,transparent 25%),
+radial-gradient(circle at top right,#facc15,transparent 25%),
+#0f172a;
+
+  min-height:100vh;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.main-container{
+  width:90%;
+  max-width:1400px;
+  margin:auto;
+}
+
+.hero{
+  text-align:center;
+  padding:80px 0;
+}
+
+.hero h1{
+  font-size:4rem;
+  font-weight:800;
+
+background:linear-gradient(
+90deg,
+#fbbf24,
+#f97316,
+#fb923c
+);
+
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  margin-top:20px;
+  color:#cbd5e1;
+  font-size:1.2rem;
+}
+
+.food-grid{
+  display:grid;
+  grid-template-columns:
+  repeat(auto-fit,minmax(300px,1fr));
+
+  gap:30px;
+
+  margin-top:50px;
+}
+
+.hero-image {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.review-track {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+
+  animation: scrollReviews 60s linear infinite;
+}
+
+.review-card {
+  width: 500px;
+
+  flex-shrink: 0;
+
+  padding: 30px;
+
+  border-radius: 24px;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter: blur(20px);
+
+  color: white;
+
+  box-sizing: border-box;
+}
+
+@keyframes scrollReviews {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.floating-food {
+  position: absolute;
+  z-index: 0;
+  opacity: 0.75;
+  pointer-events: none;
+  filter: drop-shadow(0 0 12px rgba(251,191,36,0.35));
+  animation: premiumFloat 7s ease-in-out infinite;
+}
+
+@keyframes premiumFloat {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-15px) rotate(8deg);
+  }
+  50% {
+    transform: translateY(-30px) rotate(-8deg);
+  }
+  75% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+.food1 { top: 60px; left: 70px; font-size: 55px; animation-delay: 0s; }
+.food2 { top: 50px; right: 220px; font-size: 48px; animation-delay: 1s; }
+.food3 { bottom: 270px; left: 220px; font-size: 44px; animation-delay: 2s; }
+.food4 { top: 340px; right: 100px; font-size: 42px; animation-delay: 3s; }
+.food5 { top: 90px; left: 45%; font-size: 38px; animation-delay: 1.4s; }
+.food6 { bottom: 70px; right: 330px; font-size: 40px; animation-delay: 2.4s; }
+.food7 { top: 260px; left: 52%; font-size: 50px; animation-delay: 3.1s; }
+.food8 { bottom: 80px; left: 90px; font-size: 42px; animation-delay: 4s; }
+.food9 { top: 220px; right: 420px; font-size: 35px; animation-delay: 2.7s; }
+.food10 { bottom: 250px; right: 30px; font-size: 38px; animation-delay: 5s; }
+.food11 { top: 367px; left: 500px; font-size: 36px; animation-delay: 1.8s; }
+.food12 { top: 150px; left: 68%; font-size: 40px; animation-delay: 4.5s; }
+
+button,
+a,
+input,
+select,
+textarea,
+span,
+div {
+  cursor: inherit !important;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-18px) rotate(8deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  25% {
+    transform: translateY(-12px) rotate(4deg);
+  }
+
+  50% {
+    transform: translateY(-25px) rotate(-4deg);
+  }
+
+  75% {
+    transform: translateY(-12px) rotate(3deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
