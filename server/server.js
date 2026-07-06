@@ -9,7 +9,8 @@ require("dotenv").config();
 
 const app = express();
 
-app.use(cors());
+const frontendUrl = process.env.FRONTEND_URL || "http://localhost:3000";
+app.use(cors({ origin: frontendUrl }));
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
