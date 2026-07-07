@@ -4,7 +4,7 @@ const getBaseUrl = () => {
   const configuredBase =
     process.env.REACT_APP_BACKEND_URL ||
     process.env.REACT_APP_API_URL ||
-    process.env.BACKEND_URL ||
+    process.env.REACT_APP_BASE_URL ||
     "";
 
   if (configuredBase) {

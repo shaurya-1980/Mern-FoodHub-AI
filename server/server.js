@@ -85,15 +85,40 @@ const seedFoods = async () => {
   }
 };
 
-mongoose
-  .connect(process.env.MONGO_URI, {
-    serverSelectionTimeoutMS: 10000,
-  })
-  .then(async () => {
-    console.log("MongoDB Connected");
-    await seedFoods();
-  })
-  .catch((err) => console.error("MongoDB connection error:", err.message));
+const connectMongo = async () => {
+  if (!process.env.MONGO_URI) {
+    throw new Error("MONGO_URI is not defined in environment variables");
+  }
+
+  if (global.__mongoosePromise) {
+    return global.__mongoosePromise;
+  }
+
+  mongoose.set("strictQuery", false);
+
+  global.__mongoosePromise = mongoose
+    .connect(process.env.MONGO_URI, {
+      serverSelectionTimeoutMS: 15000,
+      socketTimeoutMS: 45000,
+      connectTimeoutMS: 15000,
+      family: 4,
+    })
+    .then(async () => {
+      console.log("MongoDB Connected");
+      await seedFoods();
+    })
+    .catch((err) => {
+      console.error("MongoDB connection error:", err.message);
+      delete global.__mongoosePromise;
+      throw err;
+    });
+
+  return global.__mongoosePromise;
+};
+
+connectMongo().catch((err) => {
+  console.error("Initial MongoDB connection failed:", err);
+});
 
 const PORT = process.env.PORT || 5000;
 
