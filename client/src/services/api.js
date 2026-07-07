@@ -27,7 +27,7 @@ const getBaseUrl = () => {
 };
 
 const API = axios.create({
-  baseURL: getBaseUrl(),
+  baseURL: "https://mern-foodhub-ai.onrender.com/api",
 });
 
 export default API;
